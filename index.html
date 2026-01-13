@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Data Scientist Junior</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PORTFOLIO</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#work">Mes Projets</a></li>
+                    <li><a href="#case-study">Études de Cas</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <!-- Let's Talk button removed as requested -->
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="tag-hero">Bienvenue sur mon Portfolio</span>
+                <h1>Bienvenue sur <br>mon portfolio <br>Je suis <span class="highlight">Data Scientist Junior</span>
+                </h1>
+                <p>J'analyse des données complexes pour en extraire des insights stratégiques et construire des modèles
+                    prédictifs performants.</p>
+                <a href="#work" class="btn">Voir mes projets &rarr;</a>
+            </div>
+            <div class="hero-image">
+                <!-- Using the requested image -->
+                <img src="im2.png" alt="Photo de profil">
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag-section">Mes Projets</span>
+                <h2>Quelques réalisations</h2>
+            </div>
+
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);">
+                        <a href="#" class="arrow-corner">&nearr;</a>
+                        <!-- Visual placeholder -->
+                        <div style="text-align:center; opacity:0.8;">
+                            <i class="fas fa-cube" style="font-size: 80px; color:white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Prédiction de Churn Client</h3>
+                        <p>Développement d'un modèle de Machine Learning pour prédire l'attrition client, atteignant 92%
+                            de précision.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">
+                        <a href="#" class="arrow-corner">&nearr;</a>
+                        <div style="text-align:center; opacity:0.8;">
+                            <i class="fas fa-cubes" style="font-size: 80px; color:white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Analyse des Ventes</h3>
+                        <p>Création d'un tableau de bord interactif pour suivre les KPIs de vente et identifier les
+                            tendances saisonnières.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);">
+                        <a href="#" class="arrow-corner">&nearr;</a>
+                        <div style="text-align:center; opacity:0.8;">
+                            <i class="fas fa-shapes" style="font-size: 80px; color:white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Classification d'Images</h3>
+                        <p>Utilisation de réseaux de neurones (CNN) pour classer automatiquement des images produits
+                            pour un site e-commerce.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);">
+                        <a href="#" class="arrow-corner">&nearr;</a>
+                        <div style="text-align:center; opacity:0.8;">
+                            <i class="fas fa-circle-notch" style="font-size: 80px; color:white;"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>NLP & Analyse de Sentiment</h3>
+                        <p>Analyse des commentaires clients pour extraire le sentiment global et les principaux sujets
+                            de satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag-section">Mes Compétences</span>
+                <h2>Mes Services</h2>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 Dark -->
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Machine Learning</h3>
+                        <p>Conception et déploiement de modèles prédictifs (Régression, Classification, Clustering) pour
+                            résoudre des problèmes business.</p>
+                    </div>
+                    <a href="#" class="btn-small">Voir Projets &rarr;</a>
+                </div>
+
+                <!-- Service 2 Light -->
+                <div class="service-card light">
+                    <div class="service-content">
+                        <h3>Analyse de Données</h3>
+                        <p>Exploration de données, nettoyage et extraction d'insights à l'aide de Python (Pandas), SQL
+                            et statistiques avancées.</p>
+                    </div>
+                    <a href="#" class="btn-small">Détails &rarr;</a>
+                </div>
+
+                <!-- Service 3 Light with tint -->
+                <div class="service-card light" style="background-color: #FDF5E6;"> <!-- Light orange tint -->
+                    <div class="service-content">
+                        <h3>Visualisation</h3>
+                        <p>Création de tableaux de bord clairs et impactants (PowerBI, Tableau, Matplotlib) pour la
+                            prise de décision.</p>
+                    </div>
+                    <a href="#" class="btn-small">Détails &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: #52759c; color: #fff; padding: 40px; text-align: center;">
+        <p>&copy; 2026 Data Scientist Junior. Tous droits réservés.</p>
+    </footer>
+
+</body>
+
+</html>
