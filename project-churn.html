@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction de Churn | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-detail {
+            padding: 80px 0;
+        }
+
+        .project-header {
+            margin-bottom: 40px;
+        }
+
+        .project-header h1 {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .project-meta {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .project-content img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--color-primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PORTFOLIO</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#work">Mes Projets</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <span class="tag-hero">Machine Learning</span>
+                <h1>Prédiction de Churn Client</h1>
+                <p class="project-meta">Python, Scikit-learn, Pandas | Durée: 4 semaines</p>
+            </div>
+
+            <div class="project-content">
+                <!-- Placeholder for specific project image if available, else generic or abstract -->
+                <div
+                    style="height: 300px; background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                    <i class="fas fa-cube" style="font-size: 80px; color: white; opacity: 0.8;"></i>
+                </div>
+
+                <h2>Contexte du Projet</h2>
+                <p>Dans le secteur bancaire, la fidélisation des clients est cruciale. Ce projet visait à développer un
+                    modèle prédictif capable d'identifier les clients à risque de départ (churn) afin de leur proposer
+                    des offres ciblées.</p>
+
+                <br>
+                <h2>Méthodologie</h2>
+                <ul>
+                    <li>Collecte et nettoyage des données clients (historique, transactions, démographie).</li>
+                    <li>Analyse exploratoire des données (EDA) pour identifier les corrélations.</li>
+                    <li>Feature Engineering et sélection des variables pertinentes.</li>
+                    <li>Entraînement de modèles (Random Forest, XGBoost, Logistic Regression).</li>
+                </ul>
+
+                <br>
+                <h2>Résultats</h2>
+                <p>Le modèle final (XGBoost) a atteint une précision de 92%. Il a permis d'identifier les principaux
+                    facteurs d'attrition, tels que l'inactivité récente et le nombre de réclamations.</p>
+            </div>
+            <a href="index.html#work" class="back-link">&larr; Retour aux projets</a>
+        </div>
+    </section>
+
+    <footer style="background-color: #52759c; color: #fff; padding: 40px; text-align: center;">
+        <p>&copy; Axel Lauren|2026 Data Scientist Junior. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>

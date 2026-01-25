@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP & Analyse de Sentiment | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-detail {
+            padding: 80px 0;
+        }
+
+        .project-header {
+            margin-bottom: 40px;
+        }
+
+        .project-header h1 {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .project-meta {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .project-content img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--color-primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PORTFOLIO</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#work">Mes Projets</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <span class="tag-hero">NLP</span>
+                <h1>Analyse de Sentiment - Avis Clients</h1>
+                <p class="project-meta">Python, NLTK, Transformers (BERT) | Durée: 3 semaines</p>
+            </div>
+
+            <div class="project-content">
+                <div
+                    style="height: 300px; background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                    <i class="fas fa-circle-notch" style="font-size: 80px; color: white; opacity: 0.8;"></i>
+                </div>
+
+                <h2>Contexte du Projet</h2>
+                <p>Analyse automatique de milliers de commentaires clients pour comprendre la perception de la marque et
+                    détecter les points de friction sans analyse manuelle fastidieuse.</p>
+
+                <br>
+                <h2>Méthodologie</h2>
+                <ul>
+                    <li>Web scraping des avis clients.</li>
+                    <li>Nettoyage de texte (tokenization, stop-words, lemmatization).</li>
+                    <li>Fine-tuning d'un modèle BERT pour la classification de sentiment (Positif/Négatif/Neutre).</li>
+                    <li>Extraction de thèmes (Topic Modeling) avec LDA.</li>
+                </ul>
+
+                <br>
+                <h2>Résultats</h2>
+                <p>Classification des avis avec 94% de précision. Identification des 3 principaux sujets de plainte
+                    (livraison, support technique, facturation).</p>
+            </div>
+            <a href="index.html#work" class="back-link">&larr; Retour aux projets</a>
+        </div>
+    </section>
+
+    <footer style="background-color: #52759c; color: #fff; padding: 40px; text-align: center;">
+        <p>&copy; Axel Lauren|2026 Data Scientist Junior. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>
