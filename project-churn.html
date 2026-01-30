@@ -67,36 +67,157 @@
         <div class="container">
             <div class="project-header">
                 <span class="tag-hero">Machine Learning</span>
-                <h1>Prédiction de Churn Client</h1>
-                <p class="project-meta">Python, Scikit-learn, Pandas | Durée: 4 semaines</p>
+                <h1>Prédiction du Taux de Désabonnement (Churn)</h1>
+                <p class="project-meta">Python, Pandas, Numpy, Scikit-learn, Seaborn | Durée: 4 semaines</p>
             </div>
 
             <div class="project-content">
                 <!-- Placeholder for specific project image if available, else generic or abstract -->
-                <div
-                    style="height: 300px; background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
-                    <i class="fas fa-cube" style="font-size: 80px; color: white; opacity: 0.8;"></i>
-                </div>
+                <img src="churn_detail.png" alt="Prédiction de Churn">
 
-                <h2>Contexte du Projet</h2>
-                <p>Dans le secteur bancaire, la fidélisation des clients est cruciale. Ce projet visait à développer un
-                    modèle prédictif capable d'identifier les clients à risque de départ (churn) afin de leur proposer
-                    des offres ciblées.</p>
-
+                <p>Ce projet vise à prédire le désabonnement des clients (churn) pour une institution bancaire en
+                    utilisant des techniques d'analyse de données et de machine learning. Le churn, ou taux de
+                    désabonnement, représente le pourcentage de clients qui cessent d'utiliser un produit ou service sur
+                    une période donnée.</p>
                 <br>
-                <h2>Méthodologie</h2>
+
+                <h3>1. Installation et Chargement des Librairies</h3>
+                <p>Nous avons commencé par installer et confirmer l'installation des librairies essentielles pour
+                    l'analyse de données et le machine learning : pandas, numpy, scikit-learn, et seaborn. Ensuite, le
+                    jeu de données <em>BankChurners.csv</em> a été chargé dans un DataFrame pandas, marquant le début de
+                    notre exploration.</p>
+                <br>
+
+                <h3>2. Recherche et Traitement des Valeurs Manquantes</h3>
+                <p>Une étape cruciale de la préparation des données est la vérification des valeurs manquantes. Notre
+                    analyse a révélé que le jeu de données était exempt de toute valeur manquante, ce qui a simplifié
+                    les étapes suivantes et confirmé la propreté des données brutes.</p>
+                <br>
+
+                <h3>3. Visualisation des Distributions et Analyse Exploratoire des Données (EDA)</h3>
+                <p>Cette phase a consisté à comprendre la distribution de chaque variable à travers des visualisations :
+                </p>
                 <ul>
-                    <li>Collecte et nettoyage des données clients (historique, transactions, démographie).</li>
-                    <li>Analyse exploratoire des données (EDA) pour identifier les corrélations.</li>
-                    <li>Feature Engineering et sélection des variables pertinentes.</li>
-                    <li>Entraînement de modèles (Random Forest, XGBoost, Logistic Regression).</li>
+                    <li><strong>Variables Numériques (Histogrammes) :</strong> Nous avons examiné la forme des
+                        distributions (normale, asymétrique, multimodale) pour identifier des schémas, détecter des
+                        valeurs aberrantes potentielles (par exemple, des limites de crédit extrêmes ou des montants de
+                        transaction élevés) et comprendre la concentration des données.</li>
+                    <li><strong>Variables Catégorielles (Diagrammes en Bâtons) :</strong> Nous avons analysé la
+                        fréquence des différentes catégories (par exemple, genre, niveau d'éducation, statut marital,
+                        catégorie de carte) et noté le déséquilibre des classes pour la variable cible
+                        <em>Attrition_Flag</em> (proportion de clients existants vs. désabonnés).
+                    </li>
                 </ul>
-
                 <br>
-                <h2>Résultats</h2>
-                <p>Le modèle final (XGBoost) a atteint une précision de 92%. Il a permis d'identifier les principaux
-                    facteurs d'attrition, tels que l'inactivité récente et le nombre de réclamations.</p>
+
+                <h3>4. Évaluation de la Matrice de Corrélation</h3>
+                <p>Nous avons calculé et visualisé la matrice de corrélation pour les colonnes numériques via une carte
+                    de chaleur (heatmap). Cela nous a permis d'identifier les relations linéaires entre les variables :
+                </p>
+                <ul>
+                    <li><strong>Fortes corrélations positives :</strong> Par exemple, <em>Total_Trans_Amt</em> et
+                        <em>Total_Trans_Ct</em> étaient fortement corrélées (0.81), ainsi que <em>Credit_Limit</em> et
+                        <em>Avg_Open_To_Buy</em> (0.996). <em>Customer_Age</em> et <em>Months_on_book</em> montraient
+                        également une corrélation significative (0.79).
+                    </li>
+                    <li><strong>Corrélations négatives notables :</strong> Une corrélation négative modérée a été
+                        observée entre <em>Credit_Limit</em> et <em>Avg_Utilization_Ratio</em> (-0.48).</li>
+                    <li><strong>Identification de la Fuite de Données :</strong> Deux colonnes,
+                        <em>Naive_Bayes_Classifier_Attrition_Flag_...</em>, présentaient une corrélation parfaite (-1.00
+                        et 1.00) avec la variable cible, ce qui indiquait une fuite de données (data leakage) et
+                        nécessitait leur suppression.
+                    </li>
+                </ul>
+                <br>
+
+                <h3>5. Préparation des Données pour le Modèle de Classification</h3>
+                <p>Cette étape a été cruciale pour structurer les données pour l'apprentissage automatique :</p>
+                <ul>
+                    <li><strong>Encodage des Variables Catégorielles :</strong> La colonne <em>CLIENTNUM</em> a été
+                        supprimée. Les variables catégorielles restantes ont été transformées en format numérique à
+                        l'aide de l'One-Hot Encoding. La variable cible <em>Attrition_Flag</em> a été convertie en 0
+                        (client existant) et 1 (client désabonné).</li>
+                    <li><strong>Division des Données :</strong> Le jeu de données a été divisé en ensembles
+                        d'entraînement (80%) et de test (20%) en utilisant une stratification (<code>stratify=y</code>)
+                        pour assurer une répartition équilibrée des classes cible dans les deux ensembles.</li>
+                    <li><strong>Mise à l'Échelle des Caractéristiques Numériques :</strong> Les caractéristiques
+                        numériques ont été mises à l'échelle en utilisant <code>StandardScaler</code>. Le scaler a été
+                        ajusté sur l'ensemble d'entraînement (X_train) et appliqué sur les ensembles d'entraînement et
+                        de test (X_train_scaled, X_test_scaled) pour éviter la fuite de données.</li>
+                </ul>
+                <br>
+
+                <h3>6. Entraînement et Première Évaluation du Modèle (avec fuite de données)</h3>
+                <p>Un modèle <code>RandomForestClassifier</code> a été entraîné sur les données d'entraînement mises à
+                    l'échelle. L'évaluation initiale a montré une précision (Accuracy) parfaite de 1.00, avec une
+                    matrice de confusion et un rapport de classification indiquant zéro erreur. Ce résultat, bien
+                    qu'impressionnant, suggérait fortement un overfitting ou une fuite de données due aux colonnes
+                    <em>Naive_Bayes_Classifier_Attrition_Flag_...</em> identifiées lors de l'analyse des corrélations.
+                </p>
+                <br>
+
+                <h3>7. Identification et Suppression des Colonnes Problématiques (Correction de la Fuite de Données)
+                </h3>
+                <p>Pour remédier à la fuite de données, les colonnes <em>Naive_Bayes_Classifier_Attrition_Flag_...</em>
+                    ont été explicitement identifiées et supprimées du jeu de caractéristiques (X). Cette action était
+                    essentielle pour obtenir un modèle plus réaliste et généralisable.</p>
+                <br>
+
+                <h3>8. Re-division et Re-mise à l'Échelle des Données (après nettoyage)</h3>
+                <p>Après la suppression des caractéristiques problématiques, le jeu de données (X nettoyé et y) a été
+                    re-divisé en ensembles d'entraînement et de test (80/20 avec stratification). Les caractéristiques
+                    numériques de ces nouveaux ensembles ont ensuite été re-mises à l'échelle en utilisant
+                    <code>StandardScaler</code> pour garantir que toutes les transformations étaient appliquées
+                    correctement sur le jeu de données nettoyé.
+                </p>
+                <br>
+
+                <h3>9. Ré-entraînement et Ré-évaluation du Modèle (après correction de la fuite de données)</h3>
+                <p>Un nouveau modèle <code>RandomForestClassifier</code> a été entraîné sur les données d'entraînement
+                    nettoyées et re-mises à l'échelle. Les performances ont été ré-évaluées sur l'ensemble de test, et
+                    les résultats ont été significativement plus réalistes et interprétables :</p>
+                <ul>
+                    <li><strong>Précision (Accuracy) :</strong> 0.9546 (95.46%), une excellente performance pour un
+                        modèle de classification.</li>
+                    <li><strong>Matrice de Confusion :</strong>
+                        <ul>
+                            <li>1684 Vrais Négatifs (clients existants correctement prédits)</li>
+                            <li>250 Vrais Positifs (clients désabonnés correctement prédits)</li>
+                            <li>17 Faux Positifs (clients existants prédits comme désabonnés à tort)</li>
+                            <li>75 Faux Négatifs (clients désabonnés manqués par le modèle)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Rapport de Classification :</strong>
+                        <ul>
+                            <li><strong>Classe 0 (Clients Existants) :</strong> Précision de 0.96, Rappel de 0.99,
+                                F1-score de 0.97. Le modèle excelle à identifier les clients fidèles.</li>
+                            <li><strong>Classe 1 (Clients Désabonnés) :</strong> Précision de 0.94, Rappel de 0.77,
+                                F1-score de 0.84. La performance pour la classe de désabonnement est bonne, mais un
+                                rappel de 0.77 indique que 23% des clients qui se désabonneront réellement ne sont pas
+                                détectés par le modèle. Ceci est une cible d'amélioration potentielle.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>La matrice de confusion révisée a été visualisée, confirmant visuellement ces nouvelles performances.
+                </p>
+                <br>
+
+                <h3>Conclusion Générale et Perspectives</h3>
+                <p>Après avoir résolu le problème de fuite de données, notre <code>RandomForestClassifier</code> est
+                    devenu un modèle performant et généralisable pour la prédiction de l'attrition bancaire.
+                    L'élimination des caractéristiques causant une fuite de données a permis de transformer un modèle
+                    initialement surajusté en un outil de prédiction fiable. Bien que la performance globale soit très
+                    bonne, des efforts pourraient être consacrés à améliorer le rappel pour la classe de désabonnement
+                    afin de minimiser le nombre de clients à risque manqués.</p>
             </div>
+
+            <div class="project-links">
+                <a href="#" class="btn-rounded"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/axel-akono" class="btn-rounded"><i class="fab fa-linkedin"></i>
+                    LinkedIn</a>
+                <a href="#" class="btn-rounded"><i class="fas fa-code"></i> Google Colab</a>
+            </div>
+
             <a href="index.html#work" class="back-link">&larr; Retour aux projets</a>
         </div>
     </section>

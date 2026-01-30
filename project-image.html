@@ -66,35 +66,123 @@
     <section class="project-detail">
         <div class="container">
             <div class="project-header">
-                <span class="tag-hero">Deep Learning</span>
-                <h1>Classification d'Images E-commerce</h1>
-                <p class="project-meta">TensorFlow, Keras, Python | Durée: 3 semaines</p>
+                <span class="tag-hero">Data Analysis</span>
+                <h1>Optimisation de la Logistique</h1>
+                <p class="project-meta">Python, Pandas, Visualisation de Données | Durée: 3 semaines</p>
             </div>
 
             <div class="project-content">
-                <div
-                    style="height: 300px; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
-                    <i class="fas fa-shapes" style="font-size: 80px; color: white; opacity: 0.8;"></i>
-                </div>
+                <img src="logistic_project.jpg" alt="Optimisation Logistique"
+                    style="width: 100%; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
 
-                <h2>Contexte du Projet</h2>
-                <p>Automatisation du processus de catégorisation des produits sur une marketplace en utilisant leurs
-                    images, pour réduire le travail manuel et les erreurs.</p>
-
+                <h2>Introduction : Optimisation de la Logistique et Réduction des Délais de Livraison</h2>
+                <p>Ce projet d'analyse de données logistiques, réalisé à partir du dataset <em>Logistic.csv</em>, vise à
+                    identifier les goulots d'étranglement et à proposer des solutions concrètes pour améliorer
+                    l'efficacité des livraisons. Face à la complexité croissante des chaînes d'approvisionnement, la
+                    maîtrise des délais de livraison est un facteur clé de satisfaction client et de performance
+                    opérationnelle.</p>
                 <br>
-                <h2>Méthodologie</h2>
+
+                <h3>Objectifs du Projet</h3>
                 <ul>
-                    <li>Prétraitement des images (redimensionnement, normalisation, augmentation de données).</li>
-                    <li>Construction d'un réseau de neurones convolutif (CNN).</li>
-                    <li>Transfer Learning à l'aide de modèles pré-entraînés (VGG16, ResNet).</li>
-                    <li>Optimisation des hyperparamètres.</li>
+                    <li><strong>Exploration et Nettoyage des Données:</strong> Analyser la qualité des données,
+                        identifier les valeurs manquantes et préparer le dataset pour une analyse fiable.</li>
+                    <li><strong>Analyse des Délais de Livraison:</strong> Calculer et distribuer le temps moyen de
+                        rotation client (CTAT) pour comprendre les performances actuelles.</li>
+                    <li><strong>Identification des Goulots d'Étranglement:</strong> Détecter les lieux de prise en
+                        charge et de dépose, les plages horaires, et les types de véhicules qui contribuent le plus aux
+                        retards.</li>
+                    <li><strong>Visualisation des Zones Problématiques:</strong> Créer des cartes thermiques et des
+                        graphiques pour illustrer de manière intuitive les patterns de retards.</li>
+                    <li><strong>Recommandations Stratégiques:</strong> Proposer des solutions basées sur les données
+                        pour optimiser les opérations et réduire les temps de livraison.</li>
+                </ul>
+                <p>En mettant en œuvre des techniques d'analyse de données et de visualisation, ce projet fournit des
+                    informations exploitables permettant de transformer les défis logistiques en opportunités
+                    d'amélioration.</p>
+                <br>
+
+                <h3>Application de l'étape : Exploration et Nettoyage des Données</h3>
+                <p>Conformément à l'objectif d'exploration et de nettoyage des données, nous avons effectué les
+                    opérations suivantes pour préparer le dataset <em>Logistic.csv</em> et assurer la fiabilité de notre
+                    analyse :</p>
+                <ul>
+                    <li><strong>Chargement des données initiales:</strong> Le fichier Logistic.csv a été chargé dans un
+                        DataFrame pandas pour initier l'analyse, permettant un premier aperçu des données brutes.</li>
+                    <li><strong>Conversion des formats de date et heure:</strong> Les colonnes 'Date' et 'Time' ont été
+                        combinées et converties en un format datetime (Booking Datetime). Cette étape est cruciale pour
+                        toute analyse temporelle future, comme l'identification des goulots d'étranglement horaires.
+                    </li>
+                    <li><strong>Nettoyage des identifiants:</strong> Les guillemets superflus des colonnes 'Booking ID'
+                        et 'Customer ID' ont été supprimés pour garantir la cohérence et la propreté des données
+                        textuelles.</li>
+                    <li><strong>Analyse des valeurs manquantes:</strong> Nous avons calculé le pourcentage de valeurs
+                        manquantes pour chaque colonne. Cette analyse a révélé des lacunes importantes dans des colonnes
+                        comme les raisons d'annulation, les évaluations, ou les détails de la course.</li>
+                    <li><strong>Statistiques descriptives:</strong> Des statistiques descriptives ont été générées pour
+                        toutes les colonnes numériques, notamment Avg VTAT, Avg CTAT, Booking Value et Ride Distance.
+                    </li>
+                    <li><strong>Analyse des catégories:</strong> Les valeurs uniques et leurs fréquences ont été
+                        examinées pour les colonnes catégorielles ('Booking Status', 'Vehicle Type', 'Payment Method',
+                        'Pickup Location', 'Drop Location').</li>
+                </ul>
+                <br>
+
+                <h3>Visualisations</h3>
+                <p>Pour illustrer les goulots d'étranglement identifiés, nous avons généré les visualisations suivantes
+                    :</p>
+                <ul>
+                    <li><strong>Histogramme de la Distribution du CTAT Moyen:</strong> Montre la répartition générale
+                        des temps de livraison.</li>
+                    <li><strong>Top 10 des Lieux de Prise en Charge par CTAT Moyen:</strong> Met en évidence les
+                        emplacements où les départs sont les plus lents.</li>
+                    <li><strong>Top 10 des Lieux de Dépose par CTAT Moyen:</strong> Montre où les livraisons prennent le
+                        plus de temps à être achevées.</li>
+                    <li><strong>CTAT Moyen par Heure de la Journée:</strong> Révèle les heures où les délais sont les
+                        plus élevés (goulots d'étranglement temporels).</li>
+                    <li><strong>Carte Thermique (Heatmap):</strong> Révèle les combinaisons de lieux de prise en
+                        charge/dépose entraînant les CTAT moyens les plus élevés.</li>
+                </ul>
+                <br>
+
+                <h3>Conclusions et Recommandations</h3>
+                <h4>Récapitulatif des principales conclusions</h4>
+                <p>Après l'exploration du dataset, nous avons identifié :</p>
+                <ul>
+                    <li><strong>Qualité des Données:</strong> Volumes importants de données manquantes (annulations,
+                        évaluations, etc.).</li>
+                    <li><strong>Délai de Livraison (Avg CTAT):</strong> Moyenne d'environ 29,11 minutes.</li>
+                    <li><strong>Goulots d'Étranglement Géographiques:</strong> Lieux de prise en charge comme Noida
+                        Sector 62 et INA Market, et lieux de dépose comme Shivaji Park et Barakhamba Road affichent des
+                        CTAT élevés.</li>
+                    <li><strong>Goulots d'Étranglement Temporels:</strong> Pics significatifs à 2h, 6h et 18h.</li>
+                    <li><strong>Impact du Type de Véhicule:</strong> Les motos et Go Mini ont des CTAT légèrement
+                        supérieurs.</li>
                 </ul>
 
-                <br>
-                <h2>Résultats</h2>
-                <p>Le modèle classe correctement les produits dans 15 catégories différentes avec une accuracy de 89%.
-                    Déploiement du modèle via une API Flask.</p>
+                <h4>Solutions Potentielles</h4>
+                <ul>
+                    <li><strong>Optimisation Ciblée des Zones Géographiques:</strong> Réaffectation des chauffeurs dans
+                        les zones problématiques, optimisation des itinéraires.</li>
+                    <li><strong>Ajustements Stratégiques Basés sur le Temps:</strong> Meilleure gestion des effectifs et
+                        algorithmes de dispatch optimisés pour les pics de 2h, 6h et 18h.</li>
+                    <li><strong>Amélioration de la Performance par Type de Véhicule:</strong> Formation des chauffeurs
+                        moto et maintenance.</li>
+                    <li><strong>Amélioration de la Collecte des Données:</strong> Mécanismes obligatoires pour les
+                        raisons d'annulation et évaluations.</li>
+                </ul>
+                <p>En mettant en œuvre ces recommandations, l'entreprise peut réduire les délais de livraison, améliorer
+                    la satisfaction client et l'efficacité opérationnelle.</p>
             </div>
+
+            <div class="project-links">
+                <a href="#" class="btn-rounded"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/axel-akono" class="btn-rounded"><i class="fab fa-linkedin"></i>
+                    LinkedIn</a>
+                <a href="https://colab.research.google.com/drive/1dv9GbxD7Ru-c8bvY5obBwUPDsY0Z93pI?usp=sharing"
+                    class="btn-rounded"><i class="fas fa-code"></i> Google Colab</a>
+            </div>
+
             <a href="index.html#work" class="back-link">&larr; Retour aux projets</a>
         </div>
     </section>
